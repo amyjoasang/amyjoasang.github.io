@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#D2EA9B;">
+<head>
+    <title> Camera Feature </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/qrcode.js"></script>
+
+    
+<style> 
+body {
+    margin: 0 0 55px 0;
+}
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #E8E8E8;
+    display: flex;
+    overflow-x: auto;
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #444444;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+    background-color: #eeeeee;
+}
+
+.nav__link--active {
+    color: #009578;
+}
+    
+.nav__icon {
+    font-size: 18px;
+}
+        
+     .wrapper{
+        position:absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: rgba(0,0,0,0.6);
+        max-width: 550px;
+        width:100%
+        padding:15px; 
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;    
+        }   
+        
+        .wrapper .input{
+        width:100%;
+        padding:15px 20px;            
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        }
+</style> 
+    
+    <style>
+#container {
+	margin: 0px auto;
+	width: 600px;
+	height: 400px;
+	border: 8px #333 solid;
+    position: relative
+}
+#videoElement {
+	width: 600px;
+	height: 400px;
+	background-color: #E8E8E8;
+}
+        
+        
+        
+</style>
+    
+</head>
+ 
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="container">
+	<video autoplay="true" id="videoElement">
+	
+	</video>
+</div>
+<script>
+
+    var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+   
+</script>
+    </body>
+    </body>
+     
+<body> 
+
+<nav class="nav">
+<a href="explorepage.html" class="nav__link">
+<i class="material-icons nav__icon">search</i>
+<span class="nav__text">Explore</span>
+</a>
+        
+<a href="camerapage.html" class="nav__link nav__link--active">
+<i class="material-icons nav__icon">camera_alt</i>
+<span class="nav__text">Camera</span>
+</a>            
+        
+<a href="cardpage.html" class="nav__link">
+<i class="material-icons nav__icon">credit_card</i>
+<span class="nav__text">Cards</span>
+</a>
+        
+<a href="profilepage.html" class="nav__link">
+<i class="material-icons nav__icon">person</i>
+<span class="nav__text">Profile</span>
+</a>
+   
+</nav>
+    
+    <form onsubmit= "generate();return false;">
+    <input type="text" id="qr" name=""
+           </form>
+    </form>
+    
+    <div id="qrResult" style= "height: 100px";width="100px">
+    
+    </div>  
+    
+    
+        <script type="text/javascript">
+        var qrcode= new QRCode(document.getElementById)('qrResult'),{
+            width: 300,
+            height: 300
+        });
+            
+            function generate(){
+                var message=document. getElementById('qr')
+            if(!message.value){
+                alert("Input a text");
+                message.focus ();
+                return;
+            }
+                
+        qrcode.makeCode(message.value);
+                }
+            
+        </script>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    
+   <input type="file" id="file" name="file">
+    <p>  Qr Content: <span id="content"></span></p>
+    
+    
+   <!--To Read QR Code -->
+    <script type="text/javascript" src="qrReader.js"></script>     
+</body>
+    
+</html>
